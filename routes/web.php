@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Currency;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $allListings = Currency::all();
+    if($allListings->count()>0){
+        return view('getCurrency', [
+            'exchangeRates' => $allListings
+        ]);
+    } else {
+        return view('noCurrency');
+    }
+
 });
