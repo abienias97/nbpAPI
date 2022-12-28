@@ -25,9 +25,9 @@ class CurrencyController extends Controller
         $currencyData = $this::getFromApi();
         if(count($currencyData[0]['rates'])>0){
             $this->parseCurrency($currencyData[0]['rates']);
-            return $this->show();
+            return redirect()->intended('/');
         } else {
-            return $this->show();
+            return redirect()->intended('/');
         }
     }
 
