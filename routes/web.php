@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Currency;
+use App\Http\Controllers\CurrencyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,14 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $allListings = Currency::all();
-    if($allListings->count()>0){
-        return view('getCurrency', [
-            'exchangeRates' => $allListings
-        ]);
-    } else {
-        return view('noCurrency');
-    }
-
-});
+Route::get('/', [CurrencyController::class, 'show']);
+Route::get('/getfromapi', [CurrencyController::class, 'get']);

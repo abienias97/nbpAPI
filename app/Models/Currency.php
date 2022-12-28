@@ -10,4 +10,6 @@ class Currency extends Model
     use HasFactory;
 
     protected $table = 'currency';
+
+    public $timestamps = false;
 }
